@@ -1,0 +1,20 @@
+# Rulepack — contract build-time (evaluator: ci/check_contracts.py, chạy trên mọi MR).
+# Mỗi rule = 1 bất biến + lý do + lineage (sự cố / ratchet nào sinh ra nó). Không rule suông.
+# Prefix id theo tầng và giữ ổn định (vd R = data, I = infra, D = database). Thêm rule = 3 việc:
+# 1 entry ở đây · 1 hàm trong ci/check_contracts.py · 1 test âm trong ci/test_check_contracts.py.
+version: 1
+scope_default: ["**/*.yaml", "**/*.yml"]     # file evaluator quét — sửa theo repo
+params: {}                                    # ngưỡng dùng chung cho nhiều rule
+rules:
+  - id: X1-no-floating-image-tags
+    desc: mọi image phải pin tag cụ thể — cấm :latest / thiếu tag (deploy không tái lập được)
+    severity: error
+  # - id: X2-<ten-bat-bien>
+  #   desc: <bất biến> — <vì sao> (<ratchet #n>)
+  #   severity: error
+
+# Waiver-as-code: ngoại lệ ghi ở đây kèm lý do + điều kiện gỡ, không ghi trong chat.
+# waivers:
+#   X1-no-floating-image-tags:
+#     examples/demo.yaml: "demo throwaway — gỡ khi demo xoá"
+waivers: {}

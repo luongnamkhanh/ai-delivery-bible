@@ -1,0 +1,19 @@
+# Runtime checks — bất biến không kiểm được từ Git, phải hỏi hệ đang sống.
+# Runner: ci/check_runtime.py — check có `cmd` thì chạy (read-only), so expect_re / expect_not_re / expect_max;
+# check chưa có cmd → SKIP có tên, không lặng. Chạy sau mỗi lần roll (tay/agent), sau đó cron.
+# Check không có cmd + expect thì thực tế không ai chạy — biến thành cmd sớm nhất có thể.
+version: 1
+checks:
+  - id: RT1-example-freshness
+    target: <hệ / bảng / service>
+    why: "<sự cố hoặc ratchet nào sinh ra check này>"
+    cmd: >-
+      echo 3
+      # thay bằng lệnh thật, vd:
+      # kubectl -n <ns> exec <pod> -- mysql -N -e "SELECT TIMESTAMPDIFF(MINUTE, MAX(updated_at), NOW()) FROM <t>"
+    expect_max: 15
+
+  - id: RT2-example-spec-only
+    target: <...>
+    why: "<...>"
+    expect: "<kỳ vọng mô tả bằng lời — chưa có cmd nên runner báo SKIP RT2 (spec)>"

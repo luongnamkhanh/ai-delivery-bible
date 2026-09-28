@@ -1,0 +1,29 @@
+# Ratchet của chính bible — quyết định về cách đóng gói / phát triển bible (chỉ thêm, không sửa ngược).
+version: 1
+entries:
+  - id: 1
+    date: 2026-09-28
+    status: OPEN
+    hold: repo PRIVATE
+    why: >
+      case-studies/annamgt-2026.md chứa tên db/bảng, số MR, trích dẫn nội bộ của một khách hàng. Mở public sau khi
+      scrub case study (hoặc tách case study sang repo private riêng). Điều kiện mở lại: có bản case study đã scrub.
+
+  - id: 2
+    date: 2026-09-28
+    status: OPEN
+    hold: chưa có SKILL.md cho Claude Code (tự áp phương pháp trong mọi session)
+    why: >
+      Skill phải qua RED→GREEN (chạy baseline agent KHÔNG có skill, ghi lại vi phạm, rồi skill sửa đúng chỗ đó)
+      theo superpowers:writing-skills; chưa chạy baseline nên chưa viết. Tạm "mang đi" bằng templates/CLAUDE.md.
+      Mở lại khi bắt đầu dự án thứ hai áp bible này.
+
+  - id: 3
+    date: 2026-09-28
+    status: CLOSED
+    record: >
+      đóng gói v1 — chuyển docs/loop-framework-flow.md (v2), 3 doc research, case study annamgt vào repo này;
+      pointer để lại ở agents/docs/ và annamgt/.
+    evidence: >
+      templates/ci: pytest PASS trước commit đầu; agents/docs/loop-framework-flow.md và
+      annamgt/phuong-phap-ai-delivery.md nay là file pointer 5–10 dòng.

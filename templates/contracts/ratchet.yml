@@ -1,0 +1,24 @@
+# Ratchet — sổ quyết định chỉ-thêm, không sửa ngược. Hai loại entry:
+#  (a) hold: giữ-nguyên có chủ đích → phải có why + điều kiện mở lại;
+#  (b) record: đã làm → phải có evidence (số đo, log, MR, ảnh) + cleanup nếu có dựng tạm.
+# Mỗi catch ngoài rule (spike / review / chạy thật bắt được mà rulepack không) → 1 entry + rule_added.
+# Mục tiêu đo được: catch-ngoài-rule giảm về 0. Không entry suông — entry nào cũng trỏ tới rule hoặc bằng chứng.
+version: 1
+entries:
+  - id: 1
+    date: YYYY-MM-DD
+    status: OPEN                       # OPEN | CLOSED <ngày> — <kết quả>
+    caught_by: <spike | review | chạy thật | baseline run của rulepack>
+    finding: >
+      <điều bắt được, một đoạn, có số>
+    rule_added: <rule id hoặc runtime check id>     # bắt buộc với catch ngoài rule
+    evidence: >
+      <bằng chứng có ngày; trỏ file / MR / ảnh>
+    cleanup: "<đã dọn gì; verify bằng gì>"
+
+  # - id: 2
+  #   date: YYYY-MM-DD
+  #   status: OPEN
+  #   hold: <cái gì giữ nguyên dù đã có bản mới>
+  #   why: >
+  #     <lý do + điều kiện mở lại — vd: "đổi một biến mỗi lần; mở lại sau khi X chạy ổn ≥ 1 tuần">

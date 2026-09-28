@@ -1,0 +1,14 @@
+# .github/workflows/contracts-gate.yml — chạy evaluator trên mọi PR và push.
+# Sau khi thêm: mở một PR cố ý vi phạm rule (vd image :latest) và xác nhận check ĐỎ — bằng chứng gate sống.
+name: contracts-gate
+on: [pull_request, push]
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install --quiet pyyaml pytest
+      - run: python -m pytest ci -q          # test âm của evaluator
+      - run: python ci/check_contracts.py    # rulepack lên repo

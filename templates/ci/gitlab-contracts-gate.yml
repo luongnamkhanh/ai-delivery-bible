@@ -1,0 +1,27 @@
+# Gate contracts cho GitLab — chạy evaluator ci/check_*.py của repo trên mọi MR / branch.
+# Đặt file này vào repo ci-templates dùng chung; consumer include theo TAG (không theo main):
+#
+#   include:
+#     - project: <group>/ci-templates
+#       ref: v1
+#       file: templates/contracts-gate.yml
+#   contracts:gate:
+#     extends: .contracts-gate
+#     stage: validate
+#   # runtime check theo lịch (cần KUBECONFIG / credential trong CI variables):
+#   # runtime:check: { extends: .contracts-gate, variables: { CHECK_SCRIPT: ci/check_runtime.py }, rules: [{ if: '$CI_PIPELINE_SOURCE == "schedule"' }] }
+#
+# Đổi template = tag mới + bump ref ở consumer, không sửa ngầm dưới chân consumer.
+# Sau khi wire: xác nhận pipeline có RUNNER nhận job. Gate không có bằng chứng chạy không phải gate.
+.contracts-gate:
+  stage: test
+  image: python:3.11-slim
+  variables:
+    CHECK_SCRIPT: ci/check_contracts.py
+  script:
+    - pip install --quiet pyyaml pytest
+    - python -m pytest ci -q            # test âm của evaluator
+    - python "$CHECK_SCRIPT"            # rulepack lên repo
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH'
