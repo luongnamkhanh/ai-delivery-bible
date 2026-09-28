@@ -156,7 +156,7 @@ Ngày 24/08 là mẫu đầy đủ; các việc sau lặp cùng khuôn.
 | Tự làm trong phạm vi quyền, không phiền devops; cần đụng infra thì hỏi, không đụng iac | 05/07 "cái gì mình có quyền and có thể tự làm được thì làm -> đừng phiền tới devops"; 07/07 "dont touch the iac repo" (sau vụ 3 LB tốn thêm 1.2 triệu) |
 | Test với luồng thật, không test giả | 07/07 "có, test thì cũng phải test với luồng thật chứ" |
 | Phạm vi repo: *"đừng động lại iac"*; ownership: *"mình đâu owner repo này"* | 12/07, 20/08 |
-| Bối cảnh sạch: *"kp dự án VIB -> remove VIB ra khỏi toàn bộ context"* | 20/07 |
+| Bối cảnh sạch: *"kp dự án [công ty] -> remove [công ty] ra khỏi toàn bộ context"* | 20/07 |
 | Không attribution AI trong commit/MR; author là email của bạn | `~/.claude/CLAUDE.md`; 23/07 |
 | Đã cấp quyền thì không dừng chờ | 28/09 "k tự merge được à, t cho m quyền r mà?" |
 | Bị chặn ngoài tầm → làm phần làm được, ghi phần còn lại OPEN | 28/09 "cái nào mình làm được thì làm k được thì thôi"; ratchet infra #6 |

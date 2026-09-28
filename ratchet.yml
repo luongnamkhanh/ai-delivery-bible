@@ -3,11 +3,14 @@ version: 1
 entries:
   - id: 1
     date: 2026-09-28
-    status: OPEN
-    hold: repo PRIVATE
+    status: >-
+      CLOSED 2026-09-28 — owner quyết định PUBLIC ngay khi tạo repo. Scan trước khi push: 0 IP, 0 email, 0 hostname
+      nội bộ, 0 token/key path, 0 tên người; 1 tên công ty trong trích dẫn đã che thành "[công ty]". Còn lại trong
+      case study: tên db/bảng, số MR, id session — owner chấp nhận.
+    hold: repo PRIVATE (đề xuất ban đầu)
     why: >
-      case-studies/annamgt-2026.md chứa tên db/bảng, số MR, trích dẫn nội bộ của một khách hàng. Mở public sau khi
-      scrub case study (hoặc tách case study sang repo private riêng). Điều kiện mở lại: có bản case study đã scrub.
+      case-studies/annamgt-2026.md chứa tên db/bảng, số MR, trích dẫn nội bộ của một khách hàng. Đề xuất private tới khi
+      scrub; owner chọn public sau khi xem kết quả scan.
 
   - id: 2
     date: 2026-09-28
