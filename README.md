@@ -4,8 +4,8 @@ Cách triển khai dự án bằng AI agent mà không lạc: **trạng thái d�
 (contract · runtime check · ratchet · spike evidence), agent đề xuất và chứng minh, người chất vấn và
 phủ quyết. Rút từ 3 tháng chạy thật trên một data platform (07→09/2026) và nghiên cứu loop engineering.
 
-> Repo **PRIVATE** có chủ đích (ratchet #1): `case-studies/` chứa chi tiết nội bộ của khách hàng.
-> Muốn public → scrub case study trước.
+> Repo **PUBLIC** (ratchet #1): `case-studies/` đã quét trước khi đẩy — không IP/email/hostname/token/tên người;
+> còn tên db/bảng, số MR, id session của một dự án thật, chủ repo chấp nhận. Thêm case study mới → quét lại như vậy.
 
 ## Đọc gì trước
 
